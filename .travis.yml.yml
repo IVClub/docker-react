@@ -1,0 +1,11 @@
+sudo: required
+services:
+  - docker
+language: node_js
+
+before_install:
+  - docker build -t xuanhua/docker-react -f Dockerfile.dev .
+  - 
+# Change
+script:
+  - docker run -e CI=true xuanhua/docker-react npm run test -- --coverage
